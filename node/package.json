@@ -1,0 +1,18 @@
+{
+    "name": "node",
+    "version": "1.0.0",
+    "description": "Projeto interdisciplinar de Sistemas de Informação do 4 semestre 2022",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon index.js"
+    },
+    "author": "Leonardo Oliveira Tieppo",
+    "license": "MIT",
+    "dependencies": {
+        "bootstrap": "^5.1.3",
+        "ejs": "^3.1.8",
+        "express": "^4.18.1",
+        "mysql": "^2.18.1",
+        "nodemon": "^2.0.16"
+    }
+}

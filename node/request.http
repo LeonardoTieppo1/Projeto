@@ -1,0 +1,28 @@
+POST http://localhost:4002/produtos
+Content-Type: application/json
+
+{
+    "name":"Macarrão Linguini Renata",
+    "price":30.00
+}
+
+###
+
+GET http://localhost:4002/produtos
+
+###
+
+GET http://localhost:4002/produtos/12ae4609-2db7-4c69-bd5a-34147bd3f5f5
+
+
+###
+PUT http://localhost:4002/produtos/13a2c757-e713-4e99-9e42-e2c5288743bf
+Content-Type: application/json
+
+{
+    "name":"Feijão preto Camil",
+    "price":7.50
+}
+
+###
+DELETE http://localhost:4002/produtos/6d24c4c9-d544-4653-b7e4-80f17ff84e86
