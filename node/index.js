@@ -41,8 +41,17 @@ exports.listaVagas = (c) => {
     return runSQL(sql);
 };
 
+exports.listaGrafico = (c) => {
+    var sql = "select salario, count(*) vagas from jobs where salario is not null and UPPER(vaga) LIKE (UPPER(?)) OR UPPER(requisitos) LIKE (UPPER(?)) group by salario";
+    var params = [];
+    params.push('%' + c + '%');
+    params.push('%' + c + '%');
+    sql = mysql.format(sql, params);
+    return runSQL(sql);
+};
+
 exports.qtdVagas = (c) => {
-    var sql = "SELECT max(salario) as maximo, avg(salario) as media, count(idVag) as qtd FROM jobs WHERE UPPER(vaga) LIKE (UPPER(?)) OR UPPER(requisitos) LIKE (UPPER(?))";
+    var sql = "SELECT max(salario) as maximo, round(avg(salario),2) as media, count(idVag) as qtd FROM jobs WHERE UPPER(vaga) LIKE (UPPER(?)) OR UPPER(requisitos) LIKE (UPPER(?))";
     var params = [];
     params.push('%' + c + '%');
     params.push('%' + c + '%');
@@ -54,6 +63,7 @@ exports.qtdVagas = (c) => {
 app.get("/form", (req, res) => {
     res.render("pages/form")
 });
+
 app.post('/form', (req, res) => {
     this.listaVagas('').then((result) => {
         res.render('pages/teste', {
@@ -66,10 +76,13 @@ app.get('/', (req, res) => {
     var l = '';
     if (req.query.busca) l = req.query.busca;
     this.listaVagas(l).then(jobs => {
-        this.qtdVagas(l).then(qtd => {
-            res.render('pages/index', {
-                empresas: jobs,
-                valores: qtd[0]
+        this.listaGrafico(l).then(vagas => {
+            this.qtdVagas(l).then(qtd => {
+                res.render('pages/index', {
+                    empresas: jobs,
+                    valores: qtd[0],
+                    vagas
+                });
             });
         })
     });
