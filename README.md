@@ -2,18 +2,22 @@
 Projeto Interdisciplinar IV finalizado
 
 
-
 O projeto foi feito na pasta de arquivos node, arquivos DB_projeto.ipynb e create.sql
 
+
 ## Integrantes do grupo
+- Elton Leal Barbosa  
+
 - Leonardo Oliveira Tieppo
-- Thiago Araujo
-- Elton Leal Barboza
+
 - Pedro Henrique Pompermayer Zotelli 
+
+- Thiago Caetano de Araujo
 
 ## Intuito do projeto
 
-O intuito do projeto 
+
+Como estamos a procura de estágio, a nossa motivação foi obter métricas relacionadas às vagas do mercado de tecnologia, utilizando uma visualização mais análitica das vagas.
 
 ## Execução do código
 
@@ -58,14 +62,16 @@ CREATE VIEW `jobs` AS
 ```
 
 
-### Para executar a raspagem:
+### 2.Para executar a raspagem:
 
 Somente rodar o arquivo DB_projeto.ipynb
 ```shell
 jupyter DB_projeto.ipynb
 ```
 
-### Para executar a página:
+### 3.Para executar a página:
+
+Executar o comando no terminal para ir no arquivo node.
 
 ```shell
 cd node
